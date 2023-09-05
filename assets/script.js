@@ -39,6 +39,7 @@ function verificarInputs() {
     }
 }
 
+//Create class if person data
 class Person {
     constructor(name, telfixo, cell, foto, date, email, cep, cidade, insta, git) {
         this.name = name;
@@ -67,7 +68,34 @@ class Person {
         age--;
     }
     return age;
+    }
+
+    function cadastrarPerson() {
+        const name = document.getElementById("input-name").value;
+        const telfixo = document.getElementById("input-telfixo").value;
+        const cell = document.getElementById("input-cell").value;
+        const foto = document.getElementById("input-foto").value;
+        const date = document.getElementById("input-date").value;
+        const email = document.getElementById("input-email").value;
+        const cep = document.getElementById("input-cep").value;
+        const cidade = document.getElementById("input-cidade").value;
+        const insta = document.getElementById("input-insta").value;
+        const git = document.getElementById("input-git").value;
+        
+        console.log(name);
+        console.log(telfixo);
+        console.log(cell);
+        console.log(foto);
+        console.log(date);
+        console.log(email);
+        console.log(cep);
+        console.log(cidade);
+        console.log(insta);
+        console.log(git);
+    
+        personList.adicionarPerson(name,telfixo,cell,foto, date, email, cep, cidade, insta, git);
+    }
+
     
 
-}
 
