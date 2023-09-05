@@ -8,7 +8,7 @@ function verificarInputs() {
     let telfixo = document.getElementById("input-telfixo").value;
     let cell = document.getElementById("input-cell").value;
     let foto = document.getElementById("input-foto").value;
-    let date = document.getElementById("input-date").value;
+    let date = document.getElementById("input-data").value;
     let email = document.getElementById("input-email").value;
     let cep = document.getElementById("input-cep").value;
     let cidade = document.getElementById("input-cidade").value;
@@ -16,19 +16,19 @@ function verificarInputs() {
     let git = document.getElementById("input-git").value;
 
 
-    console.log("Nome" + name);
-    console.log("Telefone Fixo:" + telfixo);
-    console.log("Celular:" + cell);
-    console.log("URL da imagem:" + foto);
-    console.log("Data de Nascimento:" + date);
-    console.log("E-mail:" + email);
-    console.log("CEP:" + cep);
-    console.log("Cidade:" + cidade);
-    console.log("Intagram:" + insta);
-    console.log("Github:" + git);
+    console.log(name);
+    console.log(telfixo);
+    console.log(cell);
+    console.log(foto);
+    console.log(date);
+    console.log(email);
+    console.log(cep);
+    console.log(cidade);
+    console.log(insta);
+    console.log(git);
 
 
-    if (name == "" || telfixo == "" || cell == "" || foto == "" || date == "" || email == "" || cep == "" || cidade == "" || insta == "" || git =="") {
+    if (name == "" || telfixo == "" || cell == "" || foto == "" || date == "" || email == "" || cep == "" || cidade == "" || insta == "" || git == "") {
 
         console.log("Os dados estao vazios");
 
@@ -53,30 +53,30 @@ class Person {
         this.insta = insta;
         this.git = git;
         this.age = this.calculateAge(date);
-        this.sing = this.getZodiacSign(birth);
-        console.log("Passou pelo constructor da class Pet");
+        this.sing = this.getZodiacSign(date);
+        
     }
 
     // calculateAge
     calculateAge(birthdate) {
-    let today = new Date();
-    let birthdate_ = new Date(birthdate);
-    console.log(birthdate);
-    let age = today.getFullYear() - birthdate_.getFullYear();
-    let month = today.getMonth() - birthdate_.getMonth();
+        let today = new Date();
+        let birthdate_ = new Date(birthdate);
+        console.log(birthdate);
+        let age = today.getFullYear() - birthdate_.getFullYear();
+        let month = today.getMonth() - birthdate_.getMonth();
 
-    if (month < 0 || (month === 0 && today.getDate() < birthdate_.getDate())) {
-        age--;
+        if (month < 0 || (month === 0 && today.getDate() < birthdate_.getDate())) {
+            age--;
+        }
+        return age;
     }
-    return age;
-    }
-}
-//calculate sings
-    getZodiacSign(birth){
+
+    //calculate sings
+    getZodiacSign(birth) {
         let birthdate = new Date(birth);
         let day = birthdate.getDate();
         let month = birthdate.getMonth() + 1;
-        
+
 
         if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
             return "Capricórnio ♑";
@@ -102,63 +102,85 @@ class Person {
             return "Escorpião ♏";
         } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
             return "Sagitário ♐";
-        };
-    };
+        }
+    }
+}
 //create functions cadastrarPerson
-    function cadastrarPerson() {
-        const name = document.getElementById("input-name").value;
-        const telfixo = document.getElementById("input-telfixo").value;
-        const cell = document.getElementById("input-cell").value;
-        const foto = document.getElementById("input-foto").value;
-        const date = document.getElementById("input-date").value;
-        const email = document.getElementById("input-email").value;
-        const cep = document.getElementById("input-cep").value;
-        const cidade = document.getElementById("input-cidade").value;
-        const insta = document.getElementById("input-insta").value;
-        const git = document.getElementById("input-git").value;
-        
-        console.log(name);
-        console.log(telfixo);
-        console.log(cell);
-        console.log(foto);
-        console.log(date);
-        console.log(email);
-        console.log(cep);
-        console.log(cidade);
-        console.log(insta);
-        console.log(git);
-    
-        personList.adicionarPerson(name,telfixo,cell,foto, date, email, cep, cidade, insta, git);
+function cadastrarPerson() {
+    const name = document.getElementById("input-name").value;
+    const telfixo = document.getElementById("input-telfixo").value;
+    const cell = document.getElementById("input-cell").value;
+    const foto = document.getElementById("input-foto").value;
+    const date = document.getElementById("input-data").value;
+    const email = document.getElementById("input-email").value;
+    const cep = document.getElementById("input-cep").value;
+    const cidade = document.getElementById("input-cidade").value;
+    const insta = document.getElementById("input-insta").value;
+    const git = document.getElementById("input-git").value;
+
+    console.log(name);
+    console.log(telfixo);
+    console.log(cell);
+    console.log(foto);
+    console.log(date);
+    console.log(email);
+    console.log(cep);
+    console.log(cidade);
+    console.log(insta);
+    console.log(git);
+
+    personList.adicionarPerson(name, telfixo, cell, foto, date, email, cep, cidade, insta, git);
+}
+
+//Create class PersonList
+class PersonList {
+    constructor() {
+        this.persons = [];
     }
 
-    //Create class PersonList
-    class PersonList {
-        constructor() {
-            this.persons = [];
+    adicionarPerson(name, telfixo, cell, foto, date, email, cep, cidade, insta, git) {
+        if (isAnyInputEmpty()) {
+            sendMSG("Preencha todos os campos!", "error");
+        } else if (!isURLValida(foto)) {
+            sendMSG("URL da imagem inválida!", "error");
         }
+        else {
+            const person = new Person(name, telfixo, cell, foto, date, email, cep, cidade, insta, git);
+            this.persons.push(person);
+            sendMSG("Pessoa adicionado ao sistema!", "success");
+            clearInputs();
+        }
+
+    }
+}
+//Create function check inputs
+function isAnyInputEmpty() {
+    const name = document.getElementById("input-name").value;
+    const telfixo = document.getElementById("input-telfixo").value;
+    const cell = document.getElementById("input-cell").value;
+    const foto = document.getElementById("input-foto").value;
+    const date = document.getElementById("input-data").value;
+    const email = document.getElementById("input-email").value;
+    const cep = document.getElementById("input-cep").value;
+    const cidade = document.getElementById("input-cidade").value;
+    const insta = document.getElementById("input-insta").value;
+    const git = document.getElementById("input-git").value;
+
     
-        adicionarPet(name, telfixo, cell, foto, date, email, cep, cidade, insta, git) {
-            if (isAnyInputEmpty()) {
-                sendMSG("Preencha todos os campos!", "error");
-            } else if (!isURLValida(foto)) {
-                sendMSG("URL da imagem inválida!", "error");
-            }
-            else {
-                const person = new Person(name, telfixo, cell, foto, date, email, cep, cidade, insta, git);
-                this.persons.push(person);
-                sendMSG("Pessoa adicionado ao sistema!", "success");
-                clearInputs();
-            }
-    
-        }
-        }
-        //Create function exibirPersons
-        function exibirPersons() {
-            const personList = document.getElementById("containerLista");
-            personList.innerHTML = "";
-        
-            personsList.persons.forEach(person => {
-                const cardDiv = `
+
+    if (name == "" || telfixo == "" || cell == "" || foto == "" || date == "" || email == "" || cep == "" || cidade == "" || insta == "" || git == "") {
+        return true;
+    } else {
+        return false;
+    }
+}
+//Create function exibirPersons
+function exibirPersons() {
+    const personList = document.getElementById("containerLista");
+    personList.innerHTML = "";
+
+    personsList.persons.forEach(person => {
+        const cardDiv = `
                         <div class="card1">
                             <img src="${person.foto}" alt="${person.name}">
                             <h2>Telefone Fixo:${person.telfixo}</h2>
@@ -190,14 +212,15 @@ class Person {
                         </div>
                         </aside>
                     `;
-        
-                personList.innerHTML += cardDiv;
-            });
-        }
-        
-        const petsList = new PetsList();
+
+        personList.innerHTML += cardDiv;
+    });
+}
+
+const personList = new PersonList();
+
 //Create function image verification
-    function isURLValida(url) {
+function isURLValida(url) {
     if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
         return true;
     } else {
@@ -212,15 +235,15 @@ function clearInputs() {
     document.getElementById("input-telfixo").value = '';
     document.getElementById("input-cell").value = '';
     document.getElementById("input-foto").value = '';
-    document.getElementById("input-date").value = '';
+    document.getElementById("input-data").value = '';
     document.getElementById("input-email").value = '';
     document.getElementById("input-cep").value = '';
     document.getElementById("input-cidade").value = '';
     document.getElementById("input-insta").value = '';
     document.getElementById("input-git").value = '';
 }
-    //Create function for mensager
-    function sendMSG(msg, type) {
+//Create function for mensager
+function sendMSG(msg, type) {
 
     const msgDiv = document.getElementById("msg");
     msgDiv.innerHTML = "";
@@ -236,13 +259,13 @@ function clearInputs() {
     }, 3000);
 }
 
-    //Create function showRegister
-    function showRegister() {
+//Create function showRegister
+function showRegister() {
     document.getElementById("subtitle").classList.add("hidden");
     document.getElementById("container").classList.add("hidden");
     document.getElementById("containerLista").classList.add("hidden");
     document.getElementById("containerLista").classList.add("hidden");
-    
+
 
     exibirPersons();
 }
