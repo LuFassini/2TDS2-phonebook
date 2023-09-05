@@ -55,7 +55,7 @@ class Person {
         this.age = this.calculateAge(date);
         console.log("Passou pelo constructor da class Pet");
     }
-}
+
 
     calculateAge(birthdate) {
     let today = new Date();
@@ -69,7 +69,7 @@ class Person {
     }
     return age;
     }
-
+}
     getZodiacSign() {
         let birthdate = new Date(this.birthdate);
         let day = birthdate.getDate();
@@ -175,10 +175,19 @@ class Person {
                         </div>
                     `;
         
-                petList.innerHTML += cardDiv;
+                personList.innerHTML += cardDiv;
             });
         }
         
+        const petsList = new PetsList();
+
+    function isURLValida(url) {
+    if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+        return true;
+    } else {
+        return false;
+    }
+}
     
 
 
