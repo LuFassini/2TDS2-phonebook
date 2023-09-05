@@ -188,6 +188,33 @@ class Person {
         return false;
     }
 }
-    
+function clearInputs() {
 
+    document.getElementById("input-name").value = '';
+    document.getElementById("input-telfixo").value = '';
+    document.getElementById("input-cell").value = '';
+    document.getElementById("input-foto").value = '';
+    document.getElementById("input-date").value = '';
+    document.getElementById("input-email").value = '';
+    document.getElementById("input-cep").value = '';
+    document.getElementById("input-cidade").value = '';
+    document.getElementById("input-insta").value = '';
+    document.getElementById("input-git").value = '';
+}
+    
+function sendMSG(msg, type) {
+
+    const msgDiv = document.getElementById("msg");
+    msgDiv.innerHTML = "";
+
+    const msgP = `
+            <p class="${type}">${msg}</p>
+        `;
+
+    msgDiv.innerHTML += msgP;
+
+    setTimeout(function () {
+        msgDiv.innerHTML = "";
+    }, 3000);
+}
 
