@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../10- Agenda Telefonica/assets/style.css">
+    <script src="../10- Agenda Telefonica/assets/script.js"></script>
+    <title> Agenda Telefonica </title>
+</head>
+
+<header>
+    <div class="div-title"></div>
+    <h1 id="titulo-principal"> Agenda Telefonica </h1>
+</header>
+
+<body>
+    <div id="subtitle">
+        <h2 id="subtitle"> Agenda Telefonica </h2>
+    </div>
+
+<div id="container">
+        <div class="" id="div-main">
+            <div id="input-continer">
+
+                <label for="input-name"></label>
+                <input type="text" id="input-name" name="input-name" class="input" placeholder="Nome Completo"/>
+
+                <label for="input-telfixo"></label>
+                <input type="text" id="input-telfixo" name="input-telfixo" class="input" placeholder="Telefone Fixo"/>
+
+                <label for="input-cell"></label>
+                <input type="text" id="input-cell" name="input-cell" class="input" placeholder="Telefone Celular" />
+
+                <label for="input-foto"></label>
+                <input type="text" id="input-foto" name="input-foto" class="input" placeholder="URL da foto"/>
+
+                <label for="input-data"></label>
+                <input type="date" id="input-data" name="input-data" class="input" />
+
+                <label for="input-email"></label>
+                <input type="text" id="input-email" name="input-email" class="input" placeholder="E-mail"/>
+
+                <label for="input-cep"></label>
+                <input type="number" id="input-cep" name="input-cep" class="input" placeholder="CEP"/>
+
+                <label for="input-cidade"></label>
+                <input type="text" id="input-cidade" name="input-cidade" class="input" placeholder="Cidade"/>
+
+                <label for="input-insta"></label>
+                <input type="text" id="input-insta" name="input-insta" class="input" placeholder="@Instagram"/>
+
+                <label for="input-git"></label>
+                <input type="text" id="input-git" name="input-git" class="input" placeholder="@Github"/>
+                
+
+
+
+                <div id="msg"></div>
+                <div id="petList"></div>
+
+
+                <button id="but-criarPerson" type="submit" class="button" onclick="cadastrarPerson()"> Adicionar Contato </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="containerLista"></div>
+    </div>
+
+</body>
+
+</html>
