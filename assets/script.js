@@ -209,9 +209,9 @@ function exibirPersons() {
                             <button id="but-editPerson" type="submit" class="button" onclick="editarPerson()" <i class="fa-solid fa-pencil" style="color: #000000;"></i>> Editar </button>
                             <button id="but-removePerson" type="submit" class="button" onclick="removePerson()"<i class="fa-solid fa-trash" style="color: #ff0000;"></i>> Remover </button>
 
-                            <img scr:assets/images/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png </img>
-                            <img scr:assets/images/Instagram-Logo-PNG-Background-Image.png </img>
-                            <img scr:assets/images/GITHUB-LOGO.png </img>
+                            <img id="whats" scr:assets/images/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png </img>
+                            <img id="insta" scr:assets/images/Instagram-Logo-PNG-Background-Image.png </img>
+                            <img id="git" scr:assets/images/GITHUB-LOGO.png </img>
 
                         </div>
                         </aside>
@@ -226,7 +226,7 @@ function formatedCEP(cep) {
 
     let cepArray = cep.split("");
     let cepFormated =  cepArray[0] + cepArray[1] + cepArray[2]
-        + cepArray[3] + cepArray[4] + "-" cepArray[5] 
+        + cepArray[3] + cepArray[4] + "-" + cepArray[5] 
         + cepArray[6] + cepArray[7];
     return cepFormated;
 }
@@ -236,10 +236,21 @@ function formatedCell(cell) {
     let cellArray = cell.split("");
     let cellFormated = "(" + cellArray[0] + cellArray[1] + ")"
         + " " + cellArray[2] + cellArray[3] + cellArray[4]
-        + cellArray[5] + cellArray[6] + "-"
-        + cellArray[7] + cellArray[8]
-        + cellArray[9] + cellArray[10];
+        + cellArray[5] +  cellArray[6] + "-" + cellArray[7]
+        + cellArray[9] + cellArray[9] + cellArray[10];
     return cellFormated;
+}
+
+//create function to format cell phone
+function formatedtellFixo(telfixo) {
+
+    let tellArray = tell.split("");
+    let tellFormated = "(" + tellArray[0] + tellArray[1] + ")"
+        + " " + tellArray[2] + tellArray[3] + tellArray[4]
+        + tellArray[5] + tellArray[6] + "-" + tellArray[7]
+        + tellArray[8] + tellArray[9]
+        + tellArray[10];
+    return tellFormated;
 }
 
 const personList = new PersonList();
@@ -286,10 +297,10 @@ function sendMSG(msg, type) {
 
 //Create function showRegister
 function showRegister() {
-    document.getElementById("subtitle").classList.add("hidden");
-    document.getElementById("container").classList.add("hidden");
-    document.getElementById("containerLista").classList.add("hidden");
-    document.getElementById("containerLista").classList.add("hidden");
+    document.getElementById("card1").classList.add("hidden");
+    document.getElementById("aside").classList.add("hidden");
+    document.getElementById("but-editPerson").classList.add("hidden");
+    document.getElementById("but-removePerson").classList.add("hidden");
 
 
     exibirPersons();
