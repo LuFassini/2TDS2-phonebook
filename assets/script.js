@@ -70,6 +70,39 @@ class Person {
     return age;
     }
 
+    getZodiacSign() {
+        let birthdate = new Date(this.birthdate);
+        let day = birthdate.getDate();
+        let month = birthdate.getMonth() + 1;
+        console.log("Passou pelo getSigno() da class User");
+
+        if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
+            return "Capricórnio ♑";
+        } else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
+            return "Aquário ♒";
+        } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+            return "Peixes ♓";
+        } else if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+            return "Áries ♈";
+        } else if ((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
+            return "Touro ♉";
+        } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+            return "Gêmeos ♊";
+        } else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
+            return "Câncer ♋";
+        } else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+            return "Leão ♌";
+        } else if ((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
+            return "Virgem ♍";
+        } else if ((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
+            return "Libra ♎";
+        } else if ((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
+            return "Escorpião ♏";
+        } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+            return "Sagitário ♐";
+        }
+    }
+
     function cadastrarPerson() {
         const name = document.getElementById("input-name").value;
         const telfixo = document.getElementById("input-telfixo").value;
@@ -116,6 +149,36 @@ class Person {
     
         }
         }
+
+        function exibirPersons() {
+            const personList = document.getElementById("containerLista");
+            personList.innerHTML = "";
+        
+            personsList.persons.forEach(person => {
+                const cardDiv = `
+                        <div class="card">
+                            <img src="${person.foto}" alt="${person.name}">
+                            <h2>Telefone Fixo:${person.telfixo}</h2>
+                            <p>Telefone Celular:${person.cell}</p>
+                            <p>Data de Nascimento:: ${person.data}</p>
+                            <p>Idade: ${person.age}</p>
+                            <p>Signo: ${person.age}</p>
+                            <p>Email: ${person.email}</p>
+                            <p>CEP: ${person.cep}</p>
+                            <p>Cidade: ${person.cidade}</p>
+                            <p>Instagram: ${person.insta}</p>
+                            <p>Github: ${person.git}</p>
+                            <p>Idade: ${person.age}</p>
+                            
+                            <button id="but-editPet" type="submit" class="button" onclick="editarPet()"> Editar </button>
+                            <button id="but-removePet" type="submit" class="button" onclick="removePet()"> Remover </button>
+                        </div>
+                    `;
+        
+                petList.innerHTML += cardDiv;
+            });
+        }
+        
     
 
 
