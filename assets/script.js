@@ -19,6 +19,7 @@ function verificarInputs() {
     console.log("Nome" + name);
     console.log("Telefone Fixo:" + telfixo);
     console.log("Celular:" + cell);
+    console.log("URL da imagem:" + foto);
     console.log("Data de Nascimento:" + date);
     console.log("E-mail:" + email);
     console.log("CEP:" + cep);
@@ -27,7 +28,7 @@ function verificarInputs() {
     console.log("Github:" + git);
 
 
-    if (name == "" || telfixo == "" || cell == "" || date == "" || email == "" || cep == "" || cidade == "" || insta == "" || git =="") {
+    if (name == "" || telfixo == "" || cell == "" || foto == "" || date == "" || email == "" || cep == "" || cidade == "" || insta == "" || git =="") {
 
         console.log("Os dados estao vazios");
 
@@ -37,3 +38,36 @@ function verificarInputs() {
         return false;
     }
 }
+
+class Person {
+    constructor(name, telfixo, cell, foto, date, email, cep, cidade, insta, git) {
+        this.name = name;
+        this.telfixo = telfixo;
+        this.cell = cell;
+        this.foto = foto;
+        this.date = date;
+        this.email = email;
+        this.cep = cep;
+        this.cidade = cidade;
+        this.insta = insta;
+        this.git = git;
+        this.age = this.calculateAge(date);
+        console.log("Passou pelo constructor da class Pet");
+    }
+}
+
+    calculateAge(birthdate) {
+    let today = new Date();
+    let birthdate_ = new Date(birthdate);
+    console.log("Pedro", birthdate);
+    let age = today.getFullYear() - birthdate_.getFullYear();
+    let month = today.getMonth() - birthdate_.getMonth();
+
+    if (month < 0 || (month === 0 && today.getDate() < birthdate_.getDate())) {
+        age--;
+    }
+    return age;
+    
+
+}
+
