@@ -41,7 +41,7 @@ function verificarInputs() {
 
 //Create class if person data
 class Person {
-    constructor(name, telfixo, cell, foto, date, email, cep, cidade, insta, git, age, sing, birthdate) {
+    constructor(name, telfixo, cell, foto, date, email, cep, cidade, insta, git, id, age, sing, birthdate) {
         this.name = name;
         this.telfixo = telfixo;
         this.cell = cell;
@@ -52,6 +52,7 @@ class Person {
         this.cidade = cidade;
         this.insta = insta;
         this.git = git;
+        this.id = id;
         this.age = this.calculateAge(date);
         this.sing = this.getZodiacSign(date);
         
@@ -174,6 +175,8 @@ function isAnyInputEmpty() {
         return false;
     }
 }
+
+
 //Create function exibirPersons
 function exibirPersons() {
     const personList = document.getElementById("containerLista");
@@ -187,7 +190,8 @@ function exibirPersons() {
                             <p>Telefone Celular:${person.cell}</p>
                         </div>
                         
-                        <div class aside">
+                        <div class="aside">
+                        
                         <aside>
                             <img src="${person.foto}" alt="${person.name}">
                             <h2>Telefone Fixo:${person.telfixo}</h2>
@@ -215,6 +219,27 @@ function exibirPersons() {
 
         personList.innerHTML += cardDiv;
     });
+}
+
+//create function to format 
+function formatedCEP(cep) {
+
+    let cepArray = cep.split("");
+    let cepFormated =  cepArray[0] + cepArray[1] + cepArray[2]
+        + cepArray[3] + cepArray[4] + "-" cepArray[5] 
+        + cepArray[6] + cepArray[7];
+    return cepFormated;
+}
+//create function to format cell phone
+function formatedCell(cell) {
+
+    let cellArray = cell.split("");
+    let cellFormated = "(" + cellArray[0] + cellArray[1] + ")"
+        + " " + cellArray[2] + cellArray[3] + cellArray[4]
+        + cellArray[5] + cellArray[6] + "-"
+        + cellArray[7] + cellArray[8]
+        + cellArray[9] + cellArray[10];
+    return cellFormated;
 }
 
 const personList = new PersonList();

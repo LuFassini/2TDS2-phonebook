@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1 {
+    color: #ffffff;
+    width: 100%;
+}
+header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #1d2470;
+    width: 100%;
+    padding: 3.5rem;
+}
+
+#but-cad{
+    color:#ffffff;
+    background-color: #1d7044;
+    border:none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    
+}
+#msg{
+    margin-top: 0rem;
+}
+    
+.butons{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+   
+    
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+#container {
+    width: 35%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 5px;
+    justify-content: right;
+    margin-right: 50rem;
+    margin-top: 0rem;
+    text-align: right;
+}
+#but-criarPerson{
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+     right: 57rem;
+     left: 8rem;
+     margin-top: 2rem;
+}
+#container-personList{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row !important;
+    width: 70%;
+}
+
+#personList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+#input-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #1d2470;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.card1 {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    margin: 1rem;
+}
+
+.card img {
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    width: 270px;
+    height: 376px;
+}
+
+.aside {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    margin: 1rem;
+
+}
+
+.card-content {
+    text-align: left;
+}
+
+#vazio-lista {
+    color: green
+}
+
+.error{
+    color: red;
+    text-align: center;
+}
+
+.success{
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
