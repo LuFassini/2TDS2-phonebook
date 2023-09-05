@@ -96,6 +96,26 @@ class Person {
         personList.adicionarPerson(name,telfixo,cell,foto, date, email, cep, cidade, insta, git);
     }
 
+    class PersonList {
+        constructor() {
+            this.persons = [];
+        }
+    
+        adicionarPet(name, telfixo, cell, foto, date, email, cep, cidade, insta, git) {
+            if (isAnyInputEmpty()) {
+                sendMSG("Preencha todos os campos!", "error");
+            } else if (!isURLValida(foto)) {
+                sendMSG("URL da imagem inválida!", "error");
+            }
+            else {
+                const person = new Person(name, telfixo, cell, foto, date, email, cep, cidade, insta, git);
+                this.persons.push(person);
+                sendMSG("Pessoa adicionado ao sistema!", "success");
+                clearInputs();
+            }
+    
+        }
+        }
     
 
 
