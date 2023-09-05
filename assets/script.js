@@ -41,7 +41,7 @@ function verificarInputs() {
 
 //Create class if person data
 class Person {
-    constructor(name, telfixo, cell, foto, date, email, cep, cidade, insta, git) {
+    constructor(name, telfixo, cell, foto, date, email, cep, cidade, insta, git, age, sing, birthdate) {
         this.name = name;
         this.telfixo = telfixo;
         this.cell = cell;
@@ -53,14 +53,15 @@ class Person {
         this.insta = insta;
         this.git = git;
         this.age = this.calculateAge(date);
+        this.sing = this.getZodiacSign(birth);
         console.log("Passou pelo constructor da class Pet");
     }
 
-
+    // calculateAge
     calculateAge(birthdate) {
     let today = new Date();
     let birthdate_ = new Date(birthdate);
-    console.log("Pedro", birthdate);
+    console.log(birthdate);
     let age = today.getFullYear() - birthdate_.getFullYear();
     let month = today.getMonth() - birthdate_.getMonth();
 
@@ -70,11 +71,12 @@ class Person {
     return age;
     }
 }
-    getZodiacSign() {
-        let birthdate = new Date(this.birthdate);
+//calculate sings
+    getZodiacSign(birth){
+        let birthdate = new Date(birth);
         let day = birthdate.getDate();
         let month = birthdate.getMonth() + 1;
-        console.log("Passou pelo getSigno() da class User");
+        
 
         if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
             return "Capricórnio ♑";
@@ -100,9 +102,9 @@ class Person {
             return "Escorpião ♏";
         } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
             return "Sagitário ♐";
-        }
-    }
-
+        };
+    };
+//create functions cadastrarPerson
     function cadastrarPerson() {
         const name = document.getElementById("input-name").value;
         const telfixo = document.getElementById("input-telfixo").value;
@@ -129,6 +131,7 @@ class Person {
         personList.adicionarPerson(name,telfixo,cell,foto, date, email, cep, cidade, insta, git);
     }
 
+    //Create class PersonList
     class PersonList {
         constructor() {
             this.persons = [];
@@ -149,30 +152,43 @@ class Person {
     
         }
         }
-
+        //Create function exibirPersons
         function exibirPersons() {
             const personList = document.getElementById("containerLista");
             personList.innerHTML = "";
         
             personsList.persons.forEach(person => {
                 const cardDiv = `
-                        <div class="card">
+                        <div class="card1">
+                            <img src="${person.foto}" alt="${person.name}">
+                            <h2>Telefone Fixo:${person.telfixo}</h2>
+                            <p>Telefone Celular:${person.cell}</p>
+                        </div>
+                        
+                        <div class aside">
+                        <aside>
                             <img src="${person.foto}" alt="${person.name}">
                             <h2>Telefone Fixo:${person.telfixo}</h2>
                             <p>Telefone Celular:${person.cell}</p>
                             <p>Data de Nascimento:: ${person.data}</p>
                             <p>Idade: ${person.age}</p>
-                            <p>Signo: ${person.age}</p>
+                            <p>Signo: ${person.sing}</p>
                             <p>Email: ${person.email}</p>
                             <p>CEP: ${person.cep}</p>
                             <p>Cidade: ${person.cidade}</p>
                             <p>Instagram: ${person.insta}</p>
                             <p>Github: ${person.git}</p>
-                            <p>Idade: ${person.age}</p>
                             
-                            <button id="but-editPet" type="submit" class="button" onclick="editarPet()"> Editar </button>
-                            <button id="but-removePet" type="submit" class="button" onclick="removePet()"> Remover </button>
+                            
+                            <button id="but-editPerson" type="submit" class="button" onclick="editarPerson()" <i class="fa-solid fa-pencil" style="color: #000000;"></i>> Editar </button>
+                            <button id="but-removePerson" type="submit" class="button" onclick="removePerson()"<i class="fa-solid fa-trash" style="color: #ff0000;"></i>> Remover </button>
+
+                            <img scr:assets/images/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png </img>
+                            <img scr:assets/images/Instagram-Logo-PNG-Background-Image.png </img>
+                            <img scr:assets/images/GITHUB-LOGO.png </img>
+
                         </div>
+                        </aside>
                     `;
         
                 personList.innerHTML += cardDiv;
@@ -180,7 +196,7 @@ class Person {
         }
         
         const petsList = new PetsList();
-
+//Create function image verification
     function isURLValida(url) {
     if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
         return true;
@@ -188,6 +204,8 @@ class Person {
         return false;
     }
 }
+
+//function clearInputs
 function clearInputs() {
 
     document.getElementById("input-name").value = '';
@@ -201,8 +219,8 @@ function clearInputs() {
     document.getElementById("input-insta").value = '';
     document.getElementById("input-git").value = '';
 }
-    
-function sendMSG(msg, type) {
+    //Create function for mensager
+    function sendMSG(msg, type) {
 
     const msgDiv = document.getElementById("msg");
     msgDiv.innerHTML = "";
@@ -217,4 +235,16 @@ function sendMSG(msg, type) {
         msgDiv.innerHTML = "";
     }, 3000);
 }
+
+    //Create function showRegister
+    function showRegister() {
+    document.getElementById("subtitle").classList.add("hidden");
+    document.getElementById("container").classList.add("hidden");
+    document.getElementById("containerLista").classList.add("hidden");
+    document.getElementById("containerLista").classList.add("hidden");
+    
+
+    exibirPersons();
+}
+
 
